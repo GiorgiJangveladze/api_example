@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/articles',['uses' => 'ApiControllers\ArticleController@show' , 'as' => 'articles.get']);
+Route::get('/articles/{id}/comments',['uses' => 'ApiControllers\ArticleController@comments' , 'as' => 'articles.comments']);
+Route::get('/tags',['uses' => 'ApiControllers\TagController@show' , 'as' => 'tags']);
+Route::get('/tags/{id}/articles',['uses' => 'ApiControllers\TagController@articlesByTag' , 'as' => 'tag.articles']);
